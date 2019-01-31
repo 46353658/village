@@ -2,11 +2,13 @@
 <html>
 
 	<head>
-	    <title>46353658_village</title>
+	    <title>My village</title>
 	    <style>
 	        body { margin: 0; }
 			canvas { width: 60%; height: 60% }
-	    </style>
+		</style>
+		<link href="https://fonts.googleapis.com/css?family=BioRhyme" rel="stylesheet">
+		<link rel="stylesheet" href="./css/village.css">
 	</head>
 
 	<style type="text/css">
@@ -96,12 +98,17 @@
 	    	</ul>
 	    </div>
 	
-		<button onclick="toggleRotation()">Toggle rotation</button>
-		<button onclick="toggleDirection()">Toggle direction</button>
-		<button onclick="myFunctionDay()">Toggle Day/Night</button>
-	    Rotation speed 0<input id="RotationSpeed" type="range" min="0" max="10" step ="1" value="1">10
-	    Zoom out<input id="Zoom" type="range" min="1" max="3" step ="0.01" value="1">in
-	    
+		<button onclick="toggleRotation()" class="rotateButton">Toggle rotation</button>
+		<button onclick="toggleDirection()" class="directionButton">Toggle direction</button>
+		<button onclick="myFunctionDay()" class="dayButton">Toggle Day/Night</button>
+		
+		<div class="slider-div">
+			<!-- <br>Rotation speed<br>0.0<input id="RotationSpeed" type="range" min="0" max="10" step ="1" value="1" class="rotateSlider">10.0 -->
+			<br>Rotation speed<br><input id="RotationSpeed" type="range" min="0" max="10" step ="1" value="1" class="rotateSlider">
+			<!-- <br>Zoom <br>Out<input id="Zoom" type="range" min="1" max="3" step ="0.01" value="1">In -->
+			<br>Zoom <br><input id="Zoom" type="range" min="1" max="3" step ="0.01" value="1" class="zoomSlider">
+		</div>
+
 	    <script src="js/three.js"></script>
 		<script>
 	
@@ -143,6 +150,11 @@
 			function myFunctionDay() 
 			{
 	    		day = !day;
+				if (day) {
+					sphere.material.color.setHex( 0xffffff );
+				} else {
+					sphere.material.color.setHex( 0x333333 );
+				}
 	    	}
 	
 	    	function closeWin() {
